@@ -4,7 +4,7 @@
  * @Autor: huyu12
  * @Date: 2022-03-24 10:36:01
  * @LastEditors: huyu12
- * @LastEditTime: 2022-03-24 16:47:46
+ * @LastEditTime: 2022-03-24 17:22:40
  */
 var path = require("path");
 var webpack = require("webpack");
@@ -12,12 +12,12 @@ const NODE_ENV = process.env.NODE_ENV;
 module.exports = {
   entry:
     NODE_ENV === "development"
-      ? "./src/main"
+      ? "./src/main.js"
       : "./src/components/platenum-input/index.js",
   output: {
     path: path.resolve(__dirname, "./dist"),
     publicPath: "/dist/",
-    filename: "h5-platenum-input.js",
+    filename: NODE_ENV === "development" ? "build.js" : "h5-platenum-input.js",
     library: "h5-platenum-input", // 指定的就是你使用require时的模块名
     libraryTarget: "umd", // 指定输出格式
     umdNamedDefine: true // 会对 UMD 的构建过程中的 AMD 模块进行命名。否则就使用匿名的 define
